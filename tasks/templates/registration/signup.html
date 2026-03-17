@@ -1,9 +1,16 @@
-<h2>Criar conta</h2>
+{% extends 'base.html' %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Cadastrar</button>
-</form>
+{% block content %}
 
-<a href="{% url 'login' %}">Já tem conta? Login</a>
+<div style="max-width:400px; margin:auto;">
+    <h2 class="mb-4 text-center">Cadastro</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success w-100">Cadastrar</button>
+    </form>
+
+</div>
+
+{% endblock %}

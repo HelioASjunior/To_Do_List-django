@@ -1,41 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>To-Do List</title>
-</head>
-<body>
-    <h1>Minha Lista</h1>
+{% extends 'base.html' %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Nova tarefa">
-        <button type="submit">Adicionar</button>
-    </form>
+{% block content %}
 
-    <ul>
-        {% for task in tasks %}
-            <li>
-                <a href="{% url 'toggle_task' task.id %}">
-                    {% if task.completed %}
-                        <s>{{ task.title }}</s>
-                    {% else %}
-                        {{ task.title }}
-                    {% endif %}
-                </a>
+<h2 class="mb-4">📋 Minhas Tarefas</h2>
 
-                <form action="{% url 'delete_task' task.id %}" method="POST" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" onclick="return confirm('Tem certeza?')">
-                        Excluir
-                    </button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+<form method="POST" class="mb-4">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" name="title" class="form-control" placeholder="Nova tarefa...">
+        <button class="btn btn-primary">Adicionar</button>
+    </div>
+</form>
 
-        <form action="{% url 'logout' %}" method="POST" style="display:inline;">
-        {% csrf_token %}
-        <button type="submit">Sair</button>
-    </form>
-</body>
-</html>
+<ul class="list-group">
+    {% for task in tasks %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <span>
+            {% if task.completed %}
+                <s>{{ task.title }}</s>
+            {% else %}
+                {{ task.title }}
+            {% endif %}
+        </span>
+
+        <div>
+            <a href="{% url 'complete_task' task.id %}" class="btn btn-success btn-sm">✔</a>
+
+            <form action="{% url 'delete_task' task.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button class="btn btn-danger btn-sm"
+                    onclick="return confirm('Tem certeza?')">❌</button>
+            </form>
+        </div>
+
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

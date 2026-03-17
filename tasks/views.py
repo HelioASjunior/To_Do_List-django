@@ -5,7 +5,6 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
-@login_required
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -33,6 +32,10 @@ def delete_task(request, id):
 
 @login_required
 def task_list(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        if title:
+            Task.objects.create(user=request.user, title=title)
     tasks = Task.objects.filter(user=request.user)
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+    return render(request, 'tasks/task_list.html', {'tasks': tasks})    
 
