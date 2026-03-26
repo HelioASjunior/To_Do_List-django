@@ -46,7 +46,6 @@ Neste projeto estou aprendendo:
 - [ ] Adicionar prioridade (importante)
 - [ ] Adicionar data limite (deadline)
 - [ ] Filtro de tarefas (pendentes / concluídas)
-- [ ] Melhorar design (UI/UX)
 - [ ] Mensagens de feedback (ex: "tarefa criada")
 - [ ] Deploy do projeto (colocar online)
 
