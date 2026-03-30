@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Tarefa{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+
+        <div class="d-flex align-items-center gap-2 mb-4">
+            <a href="{% url 'task_list' %}" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <h5 class="mb-0 fw-semibold">Editar tarefa</h5>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">{{ form.title.label }}</label>
+                        {{ form.title }}
+                        {% for error in form.title.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">{{ form.priority.label }}</label>
+                        {{ form.priority }}
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-medium">{{ form.deadline.label }}</label>
+                        {{ form.deadline }}
+                        <div class="form-text">Opcional. Deixe em branco para sem prazo.</div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary flex-grow-1">
+                            <i class="bi bi-check2 me-1"></i> Salvar alterações
+                        </button>
+                        <a href="{% url 'task_list' %}" class="btn btn-outline-secondary">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
