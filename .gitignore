@@ -1,0 +1,64 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+*.sqlite3
+staticfiles/
+.DS_Store
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+*.sqlite3
+staticfiles/
+media/
+
+# Ambiente virtual
+venv/
+env/
+.venv/
+ENV/
+
+# Variáveis de ambiente
+.env
+.env.*
+*.env
+
+# Build / distribuição
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
